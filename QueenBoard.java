@@ -15,10 +15,4 @@ public class QueenBoard{
 		board[r][c]=1;
 
 	}
-  private int[] illegalRows(){
-		List illegal = new ArrayList<Integer>();
-		for(String str: queenBoard){
-      illegal.add(str.charAt(0))
-    }
-  }
 }
