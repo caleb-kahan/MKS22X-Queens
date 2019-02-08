@@ -3,8 +3,6 @@ import java.util.List;
 
 public class QueenBoard{
   private int [][] board;
-  private List<Integer> illegalRows;
-  private List<Integer> illegalColumns;
   private List<String> illegalPoints;
 
 	public QueenBoard(int size){
@@ -13,8 +11,11 @@ public class QueenBoard{
 
   private boolean addQueen(int r, int c){
 		board[r][c]=1;
+    if
     illegalRows.add(r);
     illegalColumns.add(c);
+    illegalPoints.add(r + "" +c);
+
 	}
 
 }
