@@ -10,4 +10,8 @@ public class QueenBoard{
 		queenBoard = new ArrayList<String>();
 	}
 
+  private boolean addQueen(int r, int c){
+		board[r][c]=1;
+
+	}
 }
