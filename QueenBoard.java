@@ -11,11 +11,15 @@ public class QueenBoard{
 
   private boolean addQueen(int r, int c){
 		board[r][c]=1;
-    if
-    illegalRows.add(r);
-    illegalColumns.add(c);
-    illegalPoints.add(r + "" +c);
 
+    illegalPoints.add(r + "" +c);
 	}
+  private boolean findslope(int x, int y, String xy){
+    double a = str.charAt(0);
+    double b = str.charAt(1);
+    double slope = (y-b)/(x-a);
+    if(Math.abs(slope)==1 || slope ==0) return false;
+    return true;
+  }
 
 }
