@@ -23,5 +23,11 @@ public class QueenBoard{
     if(Math.abs(slope)==1 || slope ==0) return false;
     return true;
   }
+  private boolean removeQueen(int r, int c){
+    board[r][c]=1;
+  }
+
+
+
 
 }
