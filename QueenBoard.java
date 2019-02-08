@@ -5,6 +5,7 @@ public class QueenBoard{
   private int [][] board;
   private List<Integer> illegalRows;
   private List<Integer> illegalColumns;
+  private List<String> illegalLines;
 
 	public QueenBoard(int size){
 		board = new int[size][size];
