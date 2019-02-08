@@ -3,11 +3,11 @@ import java.util.List;
 
 public class QueenBoard{
   private int [][] board;
-	private List<String> queenBoard;
+  private List<Integer> illegalRows;
+  private List<Integer> illegalColumns;
 
 	public QueenBoard(int size){
-		board = new int[size][size]
-		queenBoard = new ArrayList<String>();
+		board = new int[size][size];
 	}
 
   private boolean addQueen(int r, int c){
@@ -17,6 +17,7 @@ public class QueenBoard{
   private int[] illegalRows(){
 		List illegal = new ArrayList<Integer>();
 		for(String str: queenBoard){
+      illegal.add(str.charAt(0))
     }
   }
 }
