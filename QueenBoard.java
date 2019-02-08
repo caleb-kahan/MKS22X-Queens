@@ -10,11 +10,13 @@ public class QueenBoard{
 	}
 
   private boolean addQueen(int r, int c){
-		board[r][c]=1;
-
-    illegalPoints.add(r + "" +c);
-	}
-  private boolean findslope(int x, int y, String xy){
+		board[r][c]=-1;
+    if(findSlope){
+      illegalPoints.add(r + "" +c);
+      return true;
+    }
+    return false;
+  private boolean findSlope(int x, int y, String xy){
     double a = str.charAt(0);
     double b = str.charAt(1);
     double slope = (y-b)/(x-a);
