@@ -86,22 +86,25 @@ public class QueenBoard{
   }
   public boolean solve(){
 	if(illegalPoints.size()>0)throw new IllegalStateException("There is already a Queen");
+	return solveH(0);
 	
   } 
   public boolean solveH(int start){
 	if(illegalPoints.size()==board.size()) return true;
 	int column = illegalPoints.size();
 	int i=start;
-	while(! addQueen(i,column))
+	while(! addQueen(i,column) && i<board.size())
 		i++;
 	if(i==board.size()){
+		if(column==0)return false;
 		String str = illegalPoints.get(illegalPoints.size()-1);
 		start = str.charAt(0)+1;
 		removeQueen(str.charAt(0),str.charAt(1));
-		solveH(start);
+		return solveH(start);
 	}
 	else
-		solveH(0);
+		return solveH(0);
+   }
 		
   public boolean solve(){
 	for(int [] row: board){
