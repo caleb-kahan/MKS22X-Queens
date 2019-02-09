@@ -54,7 +54,12 @@ public class QueenBoard{
 	}
 	return false;
   }
-
+  public String toString(){
+	//ONE-D Array Version
+	for(int i=0;i<board.size();i++){
+		for(int j=0;j<board.size();j++){
+			
+  }
 
 
 }
