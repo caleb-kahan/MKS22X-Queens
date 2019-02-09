@@ -126,8 +126,13 @@ public class QueenBoard{
 	if(integer==false)
 		return sum;
 	else{
-		
-		
+		for(int j=0;j<board.length;j++){
+        		if(board[j][column-1]==-1){
+          			removeQueen(j,column-1);
+          			return solveH(row+1,column-1,true,sum);
+        	}	}
+      	}
+    }		
     int i=row;
     while(! addQueen(i,column) && i<board.length)
       i++;
@@ -136,12 +141,12 @@ public class QueenBoard{
       for(int j=0;j<board.length;j++){
         if(board[j][column-1]==-1){
           removeQueen(j,column-1);
-          return solveH(row+1,column-1,false,0);
+          return solveH(row+1,column-1,integer,sum);
         }
       }
     }
     else
-      return solveH(0,column+1,false,0);
+      return solveH(0,column+1,integer,sum);
   }
   public int countSolutions(){
     for(int [] row: board){
