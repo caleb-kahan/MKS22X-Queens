@@ -85,7 +85,7 @@ public class QueenBoard{
 	}			
   }
   public boolean solve(){
-	if(illegalPints.size()>0)throw new IllegalStateException("There is already a Queen");
+	if(illegalPoints.size()>0)throw new IllegalStateException("There is already a Queen");
 	
   } 
   public boolean solve(){
@@ -94,6 +94,7 @@ public class QueenBoard{
 			if(value!=0)throw new IllegalStateException("Board has a non-0 Value");
 		}
 	}
+	
 		
 	
 
