@@ -48,7 +48,11 @@ public class QueenBoard{
     return false;
   } 
   private boolean removeQueen(int r , int c){
-  	if(illegalPoints.contains(r+ "" + c)
+  	if(illegalPoints.contains(r+ "" + c)){
+		
+	}
+	return false;
+  }
 
 
 
