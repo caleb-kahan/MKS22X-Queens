@@ -113,7 +113,7 @@ public class QueenBoard{
 		}
 	}
   }
-  public boolean solveH(){
+  public boolean solveH(int row, int column){
 	
 	
 		
