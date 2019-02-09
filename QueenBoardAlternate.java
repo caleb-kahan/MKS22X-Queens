@@ -3,6 +3,7 @@ import java.util.List;
 	
 public class QueenBoard{
   private List<String> illegalPoints;
+  private int size;
 
   private boolean addQueen(int r, int c){
     for(String str: illegalPoints){
@@ -48,7 +49,7 @@ public class QueenBoard{
     return solveH(0);
 
   }
-  public int solveH(int start,boolean integer, int sum){
+  private int solveH(int start,boolean integer, int sum){
     if(illegalPoints.size()==board.length){
 	sum++;
 	if(integer==false)

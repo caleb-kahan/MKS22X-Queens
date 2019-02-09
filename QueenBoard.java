@@ -56,7 +56,7 @@ public class QueenBoard{
     return 1==solveH(0,0, false, 0);
   }
 
-  public int solveH(int row, int column, boolean integer, int sum){
+  private int solveH(int row, int column, boolean integer, int sum){
     if(column==board.length) {
 	sum++;
 	if(integer==false)
