@@ -89,15 +89,19 @@ public class QueenBoard{
 	
   } 
   public boolean solveH(int start){
+	if(illegalPoints.size()==board.size()) return true;
 	int column = illegalPoints.size();
-	int i=0;
+	int i=start;
 	while(! addQueen(i,column))
 		i++;
 	if(i==board.size()){
 		String str = illegalPoints.get(illegalPoints.size()-1);
 		start = str.charAt(0)+1;
 		removeQueen(str.charAt(0),str.charAt(1));
-		solveH(
+		solveH(start);
+	}
+	else
+		solveH(0);
 		
   public boolean solve(){
 	for(int [] row: board){
