@@ -88,12 +88,21 @@ public class QueenBoard{
 	if(illegalPoints.size()>0)throw new IllegalStateException("There is already a Queen");
 	
   } 
+  public boolean solveH(boolean state){
+	int column = illegalPoints.size();
+	int i=0;
+	while(! addQueen(i,column))
+		i++;
+	
   public boolean solve(){
 	for(int [] row: board){
 		for(int value: row){
 			if(value!=0)throw new IllegalStateException("Board has a non-0 Value");
 		}
 	}
+  }
+  public boolean solveH(){
+	
 	
 		
 	
