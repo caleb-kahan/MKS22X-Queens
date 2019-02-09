@@ -5,6 +5,11 @@ public class QueenBoard{
   private List<String> illegalPoints;
   private int size;
 
+  public QueenBoard(int size){
+    		illegalPoints = new ArrayList<String>();
+		this.size=size;
+  }
+
   private boolean addQueen(int r, int c){
     for(String str: illegalPoints){
       if(! findSlope(r,c,str))
@@ -31,8 +36,8 @@ public class QueenBoard{
 
   public String toString(){
     String str = "";
-    for(int i=0;i<board.size();i++){
-      for(int j=0;j<board.size();j++){
+    for(int i=0;i<size;i++){
+      for(int j=0;j<size;j++){
         if(illegalPoints.contains(i+""+ j){
           str+="Q ";
         }
@@ -50,7 +55,7 @@ public class QueenBoard{
 
   }
   private int solveH(int start,boolean integer, int sum){
-    if(illegalPoints.size()==board.length){
+    if(illegalPoints.size()==size){
 	sum++;
 	if(integer==false)
 		return sum;
@@ -63,9 +68,9 @@ public class QueenBoard{
     }	
     int column = illegalPoints.size();
     int i=start;
-    while(! addQueen(i,column) && i<board.length)
+    while(! addQueen(i,column) && i<size)
     i++;
-    if(i==board.length){
+    if(i==size){
       if(column==0)return sum;
       String str = illegalPoints.get(illegalPoints.size()-1);
       newStart = str.charAt(0)+1;

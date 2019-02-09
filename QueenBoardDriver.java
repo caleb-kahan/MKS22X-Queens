@@ -1,5 +1,6 @@
 public class QueenBoardDriver{
-	
-	public QueenBoard(int size){
-    		board = new int[size][size];
-  }
+	public static void main(String [] args){
+		QueenBoard chess = new QueenBoard(8);
+		System.out.println(chess.countSolutions());
+	}
+}
