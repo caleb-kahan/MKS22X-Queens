@@ -121,13 +121,18 @@ public class QueenBoard{
   }
 
   public int solveH(int row, int column, boolean integer, int sum){
-    if(column==board.length) return 1;
-    if(row==board.length) return 0;
-    int i=start;
+    if(column==board.length) {
+	sum++;
+	if(integer==false)
+		return sum;
+	else{
+		
+		
+    int i=row;
     while(! addQueen(i,column) && i<board.length)
       i++;
     if(i==board.length){
-      if(column==0)return 0;
+      if(column==0)return sum;
       for(int j=0;j<board.length;j++){
         if(board[j][column-1]==-1){
           removeQueen(j,column-1);
