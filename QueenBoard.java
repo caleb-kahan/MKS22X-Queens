@@ -93,7 +93,8 @@ public class QueenBoard{
 	int i=0;
 	while(! addQueen(i,column))
 		i++;
-	
+	if(i==board.size()){
+		removeQueen(illegalPoints.charAt(0),illegalPoints.charAt(1));
   public boolean solve(){
 	for(int [] row: board){
 		for(int value: row){
