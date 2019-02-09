@@ -94,21 +94,31 @@ public class QueenBoard{
     return solveH(0);
 
   }
-  public boolean solveH(int start,boolean integer, int sum){
-    if(illegalPoints.size()==board.length) return true;
+  public int solveH(int start,boolean integer, int sum){
+    if(illegalPoints.size()==board.length){
+	sum++;
+	if(integer==false)
+		return sum;
+	else{
+		String str = illegalPoints.get(illegalPoints.size()-1);
+      		int next = str.charAt(0)+1;
+      		removeQueen(str.charAt(0),str.charAt(1));
+		return solveH(next,integer,sum);
+	}
+    }	
     int column = illegalPoints.size();
     int i=start;
     while(! addQueen(i,column) && i<board.length)
     i++;
     if(i==board.length){
-      if(column==0)return false;
+      if(column==0)return sum;
       String str = illegalPoints.get(illegalPoints.size()-1);
-      start = str.charAt(0)+1;
+      newStart = str.charAt(0)+1;
       removeQueen(str.charAt(0),str.charAt(1));
-      return solveH(start);
+      return solveH(newStart,integer,sum);
     }
     else
-      return solveH(0);
+      return solveH(0,integer,sum);
   }*/
 
   public boolean solve(){
