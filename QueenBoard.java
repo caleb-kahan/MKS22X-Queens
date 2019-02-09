@@ -60,7 +60,7 @@ public class QueenBoard{
 
   private int solveH(int row, int column, boolean integer, int sum){
     System.out.println(this);
-    if(row==size && illegalPoints.size()==0){
+    if(row==size && column==0){
         return sum;
     }
     if(column==board.length) {
@@ -71,7 +71,7 @@ public class QueenBoard{
         for(int j=0;j<board.length;j++){
           if(board[j][column-1]==-1){
             removeQueen(j,column-1);
-            return solveH(row+1,column-1,true,sum);
+            return solveH(j+1,column-1,true,sum);
           }
         }
       }
@@ -82,11 +82,10 @@ public class QueenBoard{
         i++;
       }
       if(i==board.length){
-        if(column==0)return sum;
         for(int j=0;j<board.length;j++){
           if(board[j][column-1]==-1){
             removeQueen(j,column-1);
-            return solveH(row+1,column-1,integer,sum);
+            return solveH(j+1,column-1,integer,sum);
           }
         }
       }
