@@ -11,9 +11,19 @@ public class QueenBoard{
 
   private boolean addQueenProper(int r, int c){
 	if(board[r][c]==0){
-	board[r][c]=-1;
+		board[r][c]=-1;
+  		addMarks(r,c);
+		return true;
+	}
     	else return false;
-
+  private void addMarks(int r, int c, boolean add?){
+	int changer = (add?) ? 1 : -1;
+	for(int i=1;i++;i<board.size-c-1){
+		board[r-i][c+i]+=changer;
+		board[r][c+i]+=changer;
+		board[r+i][c+i]+=changer;
+	}
+  }
   private boolean addQueen(int r, int c){
     
     for(String str: illegalPoints){
