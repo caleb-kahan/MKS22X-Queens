@@ -9,8 +9,13 @@ public class QueenBoard{
 	board = new int[size][size];
   }
 
+  private boolean addQueenProper(int r, int c){
+	if(board[r][c]==0){
+	board[r][c]=-1;
+    	else return false;
+
   private boolean addQueen(int r, int c){
-    board[r][c]=-1;
+    
     for(String str: illegalPoints){
     	if(! findSlope(r,c,str){
       	    return false;
