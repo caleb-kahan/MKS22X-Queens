@@ -94,7 +94,7 @@ public class QueenBoard{
     return solveH(0);
 
   }
-  public boolean solveH(int start){
+  public boolean solveH(int start,boolean integer, int sum){
     if(illegalPoints.size()==board.length) return true;
     int column = illegalPoints.size();
     int i=start;
@@ -155,5 +155,9 @@ public class QueenBoard{
       }
     }
     return solveH(0,0, true, 0);
+  }
+  public int countSolutions(){
+	if(illegalPoints.size()>0)throw new IllegalStateException("There is already a Queen");
+	return solveH(0,true, 0);
   }
 }
