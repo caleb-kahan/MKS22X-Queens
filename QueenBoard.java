@@ -12,7 +12,7 @@ public class QueenBoard{
   private boolean addQueenProper(int r, int c){
 	if(board[r][c]==0){
 		board[r][c]=-1;
-  		addMarks(r,c);
+  		addMarks(r,c,true);
 		return true;
 	}
     	else return false;
@@ -25,7 +25,6 @@ public class QueenBoard{
 	}
   }
   private boolean addQueen(int r, int c){
-    
     for(String str: illegalPoints){
     	if(! findSlope(r,c,str){
       	    return false;
@@ -41,12 +40,15 @@ public class QueenBoard{
     return true;
   }
   private boolean removeQueenProper(int r, int c){
-    board[r][c]=0;
-    
+    if(board[r][c]==-1){
+	board[r][c]=0;
+    	addMarks(r,c,false);
+    	return true;
+    }
+    return false;
   } 
   private boolean removeQueen(int r , int c){
-    
-
+  	if(illegalPoints.contains(r+ "" + c)
 
 
 
