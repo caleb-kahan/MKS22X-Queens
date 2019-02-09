@@ -84,6 +84,18 @@ public class QueenBoard{
 		str+="\n";
 	}			
   }
+  public boolean solve(){
+	if(illegalPints.size()>0)throw new IllegalStateException("There is already a Queen");
+	
+  } 
+  public boolean solve(){
+	for(int [] row: board){
+		for(int value: row){
+			if(value!=0)throw new IllegalStateException("Board has a non-0 Value");
+		}
+	}
+		
+	
 
 
 }
