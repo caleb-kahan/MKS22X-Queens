@@ -56,9 +56,33 @@ public class QueenBoard{
   }
   public String toString(){
 	//ONE-D Array Version
+	String str = "";
 	for(int i=0;i<board.size();i++){
 		for(int j=0;j<board.size();j++){
-			
+			if(illegalPoints.contains(i+""+ j){
+				str+="Q ";
+			}
+			else {
+				str+="_ ";
+			}
+		}
+		str+="\n";
+	}			
+  }
+  public String toString(){
+	//TWO-D Array Version
+	String str = "";
+	for(int i=0;i<board.size();i++){
+		for(int j=0;j<board.size();j++){
+			if(board[i][j]==-1){
+				str+="Q ";
+			}
+			else {
+				str+="_ ";
+			}
+		}
+		str+="\n";
+	}			
   }
 
 
