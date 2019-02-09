@@ -139,6 +139,11 @@ public class QueenBoard{
       return solveH(0,column+1,false,0);
   }
   public int countSolutions(){
-    
+    for(int [] row: board){
+      for(int value: row){
+        if(value!=0)throw new IllegalStateException("Board has a non-0 Value");
+      }
+    }
+    return solveH(0,0, true, 0);
   }
 }
