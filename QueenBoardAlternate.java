@@ -5,7 +5,7 @@ public class QueenBoardAlternate{
   private List<String> illegalPoints;
   private int size;
 
-  public QueenBoard(int size){
+  public QueenBoardAlternate(int size){
     		illegalPoints = new ArrayList<String>();
 		this.size=size;
   }
@@ -20,8 +20,8 @@ public class QueenBoardAlternate{
     return true;
   }
   private boolean findSlope(int x, int y, String xy){
-    double a = str.charAt(0);
-    double b = str.charAt(1);
+    double a = xy.charAt(0);
+    double b = xy.charAt(1);
     double slope = (y-b)/(x-a);
     if(Math.abs(slope)==1 || slope ==0) return false;
     return true;
@@ -47,6 +47,7 @@ public class QueenBoardAlternate{
       }
       str+="\n";
     }
+		return str;
   }
 
   public boolean solve(){
@@ -75,7 +76,7 @@ public class QueenBoardAlternate{
     if(i==size){
       if(column==0)return sum;
       String str = illegalPoints.get(illegalPoints.size()-1);
-      newStart = str.charAt(0)+1;
+      int newStart = str.charAt(0)+1;
       removeQueen(str.charAt(0),str.charAt(1));
       return solveH(newStart,integer,sum);
     }
