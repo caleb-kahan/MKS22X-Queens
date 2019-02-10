@@ -68,7 +68,7 @@ public class QueenBoard{
           			return solveH(row+1,column-1,true,sum);
         	}	}
       	}
-    }		
+    }
     int i=row;
     while(! addQueen(i,column) && i<board.length)
       i++;
@@ -81,8 +81,7 @@ public class QueenBoard{
         }
       }
     }
-    else
-      return solveH(0,column+1,integer,sum);
+    return solveH(0,column+1,integer,sum);
   }
   public int countSolutions(){
     for(int [] row: board){

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-	
+
 public class QueenBoard{
   private List<String> illegalPoints;
   private int size;
@@ -38,7 +38,7 @@ public class QueenBoard{
     String str = "";
     for(int i=0;i<size;i++){
       for(int j=0;j<size;j++){
-        if(illegalPoints.contains(i+""+ j){
+        if(illegalPoints.contains(i+""+ j)){
           str+="Q ";
         }
         else {
@@ -51,7 +51,7 @@ public class QueenBoard{
 
   public boolean solve(){
     if(illegalPoints.size()>0)throw new IllegalStateException("There is already a Queen");
-    return solveH(0);
+    return 1==solveH(0,false,0);
 
   }
   private int solveH(int start,boolean integer, int sum){
@@ -65,7 +65,7 @@ public class QueenBoard{
       		removeQueen(str.charAt(0),str.charAt(1));
 		return solveH(next,integer,sum);
 	}
-    }	
+    }
     int column = illegalPoints.size();
     int i=start;
     while(! addQueen(i,column) && i<size)
