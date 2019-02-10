@@ -6,32 +6,35 @@ public class QueenBoard{
   private List<String> illegalPoints;
 
   public QueenBoard(int size){
-	board = new int[size][size];
+    board = new int[size][size];
   }
 
   private boolean addQueenProper(int r, int c){
-	if(board[r][c]==0){
-		board[r][c]=-1;
-  		addMarks(r,c,true);
-		return true;
-	}
-    	else return false;
-  private void addMarks(int r, int c, boolean add?){
-	int changer = (add?) ? 1 : -1;
-	for(int i=1;i++;i<board.size-c-1){
-		board[r-i][c+i]+=changer;
-		board[r][c+i]+=changer;
-		board[r+i][c+i]+=changer;
-	}
+    if(board[r][c]==0){
+      board[r][c]=-1;
+      addMarks(r,c,true);
+      return true;
+    }
+    else
+    return false;
+  }
+  private void addMarks(int r, int c, boolean add){
+    int changer = (add) ? 1 : -1;
+    for(int i=1;i<board.size-c-1;i++){
+      board[r-i][c+i]+=changer;
+      board[r][c+i]+=changer;
+      board[r+i][c+i]+=changer;
+    }
   }
   private boolean addQueen(int r, int c){
     for(String str: illegalPoints){
-    	if(! findSlope(r,c,str){
-      	    return false;
-	}
+      if(! findSlope(r,c,str))
+      return false;
+
     }
     illegalPoints.add(r + "" +c);
     return true;
+  }
   private boolean findSlope(int x, int y, String xy){
     double a = str.charAt(0);
     double b = str.charAt(1);
@@ -41,83 +44,80 @@ public class QueenBoard{
   }
   private boolean removeQueenProper(int r, int c){
     if(board[r][c]==-1){
-	board[r][c]=0;
-    	addMarks(r,c,false);
-    	return true;
+      board[r][c]=0;
+      addMarks(r,c,false);
+      return true;
     }
     return false;
-  } 
+  }
   private boolean removeQueen(int r , int c){
-  	if(illegalPoints.contains(r+ "" + c)){
-		illegalPoints.remove(r + "" +c);
-		return true;
-	}
-	return false;
+    if(illegalPoints.contains(r+ "" + c)){
+      illegalPoints.remove(r + "" +c);
+      return true;
+    }
+    return false;
   }
+
+  /*public String toString(){
+    //ONE-D Array Version
+    String str = "";
+    for(int i=0;i<board.size();i++){
+      for(int j=0;j<board.size();j++){
+        if(illegalPoints.contains(i+""+ j){
+          str+="Q ";
+        }
+        else {
+          str+="_ ";
+        }
+      }
+      str+="\n";
+    }
+  }*/
   public String toString(){
-	//ONE-D Array Version
-	String str = "";
-	for(int i=0;i<board.size();i++){
-		for(int j=0;j<board.size();j++){
-			if(illegalPoints.contains(i+""+ j){
-				str+="Q ";
-			}
-			else {
-				str+="_ ";
-			}
-		}
-		str+="\n";
-	}			
+    //TWO-D Array Version
+    String str = "";
+    for(int i=0;i<board.length;i++){
+      for(int j=0;j<board.length;j++){
+        if(board[i][j]==-1){
+          str+="Q ";
+        }
+        else {
+          str+="_ ";
+        }
+      }
+      str+="\n";
+    }
+    return str;
   }
-  public String toString(){
-	//TWO-D Array Version
-	String str = "";
-	for(int i=0;i<board.size();i++){
-		for(int j=0;j<board.size();j++){
-			if(board[i][j]==-1){
-				str+="Q ";
-			}
-			else {
-				str+="_ ";
-			}
-		}
-		str+="\n";
-	}			
+  /*public boolean solve(){
+    if(illegalPoints.size()>0)throw new IllegalStateException("There is already a Queen");
+    return solveH(0);
+
   }
-  public boolean solve(){
-	if(illegalPoints.size()>0)throw new IllegalStateException("There is already a Queen");
-	return solveH(0);
-	
-  } 
   public boolean solveH(int start){
-	if(illegalPoints.size()==board.size()) return true;
-	int column = illegalPoints.size();
-	int i=start;
-	while(! addQueen(i,column) && i<board.size())
-		i++;
-	if(i==board.size()){
-		if(column==0)return false;
-		String str = illegalPoints.get(illegalPoints.size()-1);
-		start = str.charAt(0)+1;
-		removeQueen(str.charAt(0),str.charAt(1));
-		return solveH(start);
-	}
-	else
-		return solveH(0);
-   }
-		
+    if(illegalPoints.size()==board.length) return true;
+    int column = illegalPoints.size();
+    int i=start;
+    while(! addQueen(i,column) && i<board.length)
+    i++;
+    if(i==board.length){
+      if(column==0)return false;
+      String str = illegalPoints.get(illegalPoints.size()-1);
+      start = str.charAt(0)+1;
+      removeQueen(str.charAt(0),str.charAt(1));
+      return solveH(start);
+    }
+    else
+      return solveH(0);
+  }*/
+
   public boolean solve(){
-	for(int [] row: board){
-		for(int value: row){
-			if(value!=0)throw new IllegalStateException("Board has a non-0 Value");
-		}
-	}
+    for(int [] row: board){
+      for(int value: row){
+        if(value!=0)throw new IllegalStateException("Board has a non-0 Value");
+      }
+    }
   }
   public boolean solveH(int row, int column){
-	
-	
-		
-	
-
-
+  }
 }
