@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class QueenBoard{
+public class QueenBoardAlternate{
   private List<String> illegalPoints;
   private int size;
 
