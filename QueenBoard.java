@@ -68,9 +68,10 @@ public class QueenBoard{
           if(board[j][column-1]==-1){
             removeQueen(j,column-1);
             return solveH(row+1,column-1,true,sum);
-          }	}
+          }
         }
       }
+    }
       int i=row;
       while(i<board.length && ! addQueen(i,column))
         i++;
