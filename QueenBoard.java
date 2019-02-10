@@ -117,7 +117,27 @@ public class QueenBoard{
         if(value!=0)throw new IllegalStateException("Board has a non-0 Value");
       }
     }
+    return solveH(0,0);
   }
+
   public boolean solveH(int row, int column){
+    if(column==board.length) return true;
+    if(row==board.length) return false;
+    int i=start;
+    while(! addQueen(i,column) && i<board.length)
+      i++;
+    if(i==board.length){
+      if(column==0)return false;
+      for(int j=0;j<board.length;j++){
+        if(board[j][column-1]==-1){
+
+        }
+      }
+      removeQueen(str.charAt(0),str.charAt(1));
+      return solveH(start);
+    }
+    else
+      return solveH(0,column+1);
+
   }
 }
