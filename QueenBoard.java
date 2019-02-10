@@ -120,7 +120,7 @@ public class QueenBoard{
     return solveH(0,0);
   }
 
-  public boolean solveH(int row, int column){
+  public boolean solveH(int row, int column, boolean integer, int sum){
     if(column==board.length) return true;
     if(row==board.length) return false;
     int i=start;
@@ -138,5 +138,7 @@ public class QueenBoard{
     else
       return solveH(0,column+1);
   }
-  
+  public int countSolutions(){
+
+  }
 }
