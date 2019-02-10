@@ -18,10 +18,10 @@ public class QueenBoard{
     int changer = (add) ? 1 : -1;
     for(int i=1;c+i<board.length;i++){
       if(r-i>-1)
-        board[r-i][c+i]+=changer;
+      board[r-i][c+i]+=changer;
       board[r][c+i]+=changer;
       if(r+i<board.length)
-        board[r+i][c+i]+=changer;
+      board[r+i][c+i]+=changer;
     }
   }
   private boolean removeQueen(int r, int c){
@@ -60,37 +60,37 @@ public class QueenBoard{
 
   private int solveH(int row, int column, boolean integer, int sum){
     if(column==board.length) {
-	sum++;
-	if(integer==false)
-		return sum;
-	else{
-		for(int j=0;j<board.length;j++){
-        		if(board[j][column-1]==-1){
-          			removeQueen(j,column-1);
-          			return solveH(row+1,column-1,true,sum);
-        	}	}
-      	}
-    }
-    int i=row;
-    while(! addQueen(i,column) && i<board.length)
-      i++;
-    if(i==board.length){
-      if(column==0)return sum;
-      for(int j=0;j<board.length;j++){
-        if(board[j][column-1]==-1){
-          removeQueen(j,column-1);
-          return solveH(row+1,column-1,integer,sum);
+      sum++;
+      if(integer==false)
+        return sum;
+      else{
+        for(int j=0;j<board.length;j++){
+          if(board[j][column-1]==-1){
+            removeQueen(j,column-1);
+            return solveH(row+1,column-1,true,sum);
+          }	}
         }
       }
-    }
-    return solveH(0,column+1,integer,sum);
-  }
-  public int countSolutions(){
-    for(int [] row: board){
-      for(int value: row){
-        if(value!=0)throw new IllegalStateException("Board has a non-0 Value");
+      int i=row;
+      while(i<board.length && ! addQueen(i,column))
+        i++;
+      if(i==board.length){
+        if(column==0)return sum;
+        for(int j=0;j<board.length;j++){
+          if(board[j][column-1]==-1){
+            removeQueen(j,column-1);
+            return solveH(row+1,column-1,integer,sum);
+          }
+        }
       }
+      return solveH(0,column+1,integer,sum);
     }
-    return solveH(0,0, true, 0);
+    public int countSolutions(){
+      for(int [] row: board){
+        for(int value: row){
+          if(value!=0)throw new IllegalStateException("Board has a non-0 Value");
+        }
+      }
+      return solveH(0,0, true, 0);
+    }
   }
-}
