@@ -68,8 +68,10 @@ public class QueenBoard{
     }
     int column = illegalPoints.size();
     int i=start;
-    while(! addQueen(i,column) && i<size)
-    i++;
+		while(i<size){
+			if(addQueen(i,column))break;
+			i++;
+		}
     if(i==size){
       if(column==0)return sum;
       String str = illegalPoints.get(illegalPoints.size()-1);
