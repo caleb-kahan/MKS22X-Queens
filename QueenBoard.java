@@ -130,14 +130,13 @@ public class QueenBoard{
       if(column==0)return false;
       for(int j=0;j<board.length;j++){
         if(board[j][column-1]==-1){
-
+          removeQueen(j,column-1);
+          return solveH(row+1,column-1);
         }
       }
-      removeQueen(str.charAt(0),str.charAt(1));
-      return solveH(start);
     }
     else
       return solveH(0,column+1);
-
   }
+  
 }
