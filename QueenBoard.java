@@ -117,28 +117,28 @@ public class QueenBoard{
         if(value!=0)throw new IllegalStateException("Board has a non-0 Value");
       }
     }
-    return solveH(0,0);
+    return 1==solveH(0,0, false, 0);
   }
 
-  public boolean solveH(int row, int column, boolean integer, int sum){
-    if(column==board.length) return true;
-    if(row==board.length) return false;
+  public int solveH(int row, int column, boolean integer, int sum){
+    if(column==board.length) return 1;
+    if(row==board.length) return 0;
     int i=start;
     while(! addQueen(i,column) && i<board.length)
       i++;
     if(i==board.length){
-      if(column==0)return false;
+      if(column==0)return 0;
       for(int j=0;j<board.length;j++){
         if(board[j][column-1]==-1){
           removeQueen(j,column-1);
-          return solveH(row+1,column-1);
+          return solveH(row+1,column-1,false,0);
         }
       }
     }
     else
-      return solveH(0,column+1);
+      return solveH(0,column+1,false,0);
   }
   public int countSolutions(){
-
+    
   }
 }
