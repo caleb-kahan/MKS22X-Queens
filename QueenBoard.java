@@ -16,7 +16,7 @@ public class QueenBoard{
   }
   private void addMarks(int r, int c, boolean add){
     int changer = (add) ? 1 : -1;
-    for(int i=1;i<board.size-c-1;i++){
+    for(int i=1;i<board.length-c-1;i++){
       board[r-i][c+i]+=changer;
       board[r][c+i]+=changer;
       board[r+i][c+i]+=changer;
