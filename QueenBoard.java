@@ -73,8 +73,10 @@ public class QueenBoard{
       }
     }
       int i=row;
-      while(i<board.length && ! addQueen(i,column))
+      while(i<board.length){
+        if(addQueen(i,column))break;
         i++;
+      }
       if(i==board.length){
         if(column==0)return sum;
         for(int j=0;j<board.length;j++){
