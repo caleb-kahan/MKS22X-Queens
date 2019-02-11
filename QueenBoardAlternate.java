@@ -21,8 +21,8 @@ public class QueenBoardAlternate{
 	}
 
 	private boolean findSlope(int x, int y, String xy){
-		int a = xy.charAt(0);
-		int b = xy.charAt(1);
+		int a = Character.getNumericValue(xy.charAt(0));
+		int b = Character.getNumericValue(xy.charAt(1));
 		if( x == a || y == b || Math.abs(y-b) == Math.abs(x-a)) return false;
 		return true;
 	}
@@ -57,13 +57,14 @@ public class QueenBoardAlternate{
 
 	}
 	private int solveH(int row, boolean retNumSolutions, int sum){
+		System.out.printf("row:%d, num:%b, sum:%d.\n", row, retNumSolutions, sum);
 		if(illegalPoints.size() == size){
 			sum++;
 			if(retNumSolutions==false)
 				return sum;
 			else{
 				String str = illegalPoints.get(illegalPoints.size() - 1);
-				int nextRow = str.charAt(0) + 1;
+				int nextRow = Character.getNumericValue(str.charAt(0)) + 1;
 				if(! removeQueen(str)) return -1;
 				return solveH(nextRow, retNumSolutions, sum);
 			}
@@ -77,7 +78,7 @@ public class QueenBoardAlternate{
 		if(i == size){
 			if(column == 0) return sum;
 			String str = illegalPoints.get(illegalPoints.size()-1);
-			int newStart = str.charAt(0) + 1;
+			int newStart = Character.getNumericValue(str.charAt(0)) + 1;
 			removeQueen(str);
 			return solveH(newStart, retNumSolutions, sum);
 		}
