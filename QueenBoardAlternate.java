@@ -27,8 +27,8 @@ public class QueenBoardAlternate{
 		return true;
 	}
 	private boolean removeQueen(int r , int c){
-		if(illegalPoints.contains(r+ "" + c)){
-			illegalPoints.remove(r + "" +c);
+		if(illegalPoints.contains(r + "" + c)){
+			illegalPoints.remove(r + "" + c);
 			return true;
 		}
 		return false;
@@ -55,20 +55,20 @@ public class QueenBoardAlternate{
 		return 1==solveH(0,false,0);
 
 	}
-	private int solveH(int start,boolean integer, int sum){
+	private int solveH(int row,boolean integer, int sum){
 		if(illegalPoints.size()==size){
 			sum++;
 			if(integer==false)
 			return sum;
 			else{
 				String str = illegalPoints.get(illegalPoints.size()-1);
-				int next = str.charAt(0)+1;
-				if(! removeQueen(str.charAt(0),str.charAt(1)))return -10000;
-				return solveH(next,integer,sum);
+				int nextRow = str.charAt(0)+1;
+				if(! removeQueen(str.charAt(0),str.charAt(1)))return -1;
+				return solveH(nextRow,integer,sum);
 			}
 		}
 		int column = illegalPoints.size();
-		int i=start;
+		int i=row;
 		while(i<size){
 			if(addQueen(i,column))break;
 			i++;
