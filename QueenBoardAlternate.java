@@ -63,8 +63,10 @@ public class QueenBoardAlternate{
 		}
 		if(illegalPoints.size() == size){
 			sum++;
-			if(retNumSolutions==false)
+			if(retNumSolutions==false){
+				System.out.println(this);
 				return sum;
+			}
 			else{
 				String str = illegalPoints.get(illegalPoints.size() - 1);
 				int nextRow = Character.getNumericValue(str.charAt(0)) + 1;
