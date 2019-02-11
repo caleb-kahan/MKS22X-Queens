@@ -57,7 +57,7 @@ public class QueenBoardAlternate{
 
 	}
 	private int solveH(int row, boolean retNumSolutions, int sum){
-		System.out.printf("row:%d, num:%b, sum:%d.\n", row, retNumSolutions, sum);
+		if(row==size && illegalPoints.size()==0)return sum;
 		if(illegalPoints.size() == size){
 			sum++;
 			if(retNumSolutions==false)
@@ -76,7 +76,6 @@ public class QueenBoardAlternate{
 			i++;
 		}
 		if(i == size){
-			if(column == 0) return sum;
 			String str = illegalPoints.get(illegalPoints.size()-1);
 			int newStart = Character.getNumericValue(str.charAt(0)) + 1;
 			removeQueen(str);
