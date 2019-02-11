@@ -59,6 +59,10 @@ public class QueenBoard{
   }
 
   private int solveH(int row, int column, boolean integer, int sum){
+    System.out.println(this);
+    if(row==size && illegalPoints.size()==0){
+        return sum;
+    }
     if(column==board.length) {
       sum++;
       if(integer==false)
