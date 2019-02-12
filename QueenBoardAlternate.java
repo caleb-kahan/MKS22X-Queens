@@ -58,13 +58,11 @@ public class QueenBoardAlternate{
 	}
 	private int solveH(int row, boolean retNumSolutions, int sum){
 		if(row==size && illegalPoints.size()==0){
-				System.out.println(this);
 				return sum;
 		}
 		if(illegalPoints.size() == size){
 			sum++;
 			if(retNumSolutions==false){
-				System.out.println(this);
 				return sum;
 			}
 			else{
