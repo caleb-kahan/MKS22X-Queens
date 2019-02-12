@@ -59,8 +59,7 @@ public class QueenBoard{
   }
 
   private int solveH(int row, int column, boolean integer, int sum){
-    System.out.println(this);
-    if(row==size && column==0){
+    if(row==board.length && column==0){
         return sum;
     }
     if(column==board.length) {
