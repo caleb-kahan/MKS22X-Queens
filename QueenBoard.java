@@ -47,7 +47,7 @@ public class QueenBoard{
     System.out.println(this);
     Text.wait(50);*/
 
-    if(illegalPoints.size()>0 && rc.charAt(1)>illegalPoints.get(illegalPoints.size()-1).charAt(1)) System.out.println("I FOUND THE PROBLEM");
+    if(illegalPoints.size()>0 && rc.charAt(1)<illegalPoints.get(illegalPoints.size()-1).charAt(1)) System.out.println("I FOUND THE PROBLEM");
 		for(String str: illegalPoints){
 			if(! findSlope(rc,str))
 				return false;
