@@ -43,9 +43,10 @@ public class QueenBoard{
     }
   */
   public boolean addQueen(String rc){
-    System.out.println(Text.go(1,1));
+  /*System.out.println(Text.go(1,1));
     System.out.println(this);
-    Text.wait(50);
+    Text.wait(50);*/
+    if(rc.charAt(1)<illegalPoints.get(illegalPoints.size()-1).charAt(1)) System.out.println("I FOUND THE PROBLEM");
 		for(String str: illegalPoints){
 			if(! findSlope(rc,str))
 				return false;
@@ -55,6 +56,10 @@ public class QueenBoard{
 		return true;
 	}
   public boolean removeQueen(String xy){
+    if(! illegalPoints.get(illegalPoints.size()-1).equals(xy)) System.out.println("I FOUND THE PROBLEM");
+    /*System.out.println(Text.go(1,1));
+    System.out.println(this);
+    Text.wait(50);*/
     if(illegalPoints.contains(xy)){
       illegalPoints.remove(xy);
       return true;
