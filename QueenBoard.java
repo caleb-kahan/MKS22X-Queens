@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/*Commented Out stuff is my special stuff.*/
+/*Commented Out stuff is your special stuff.*/
 
 public class QueenBoard{
   //public int [][] board;
