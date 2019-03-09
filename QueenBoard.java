@@ -1,18 +1,18 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /*Commented Out stuff is your special stuff.*/
 
 public class QueenBoard{
   //public int [][] board;
-  public List<String> illegalPoints;
-  public int size;
-  //
+  public int [] illegalPoints;
 
   public QueenBoard(int size){
     //board = new int[size][size];
-    illegalPoints = new ArrayList<String>();
-    this.size=size;
+    illegalPoints = new int [size];
+    for(int i=0;i<size;i++){
+      illegalPoints[i]=-1;
+    }
   }
 
   /*public boolean addQueen(int r, int c){
@@ -24,11 +24,7 @@ public class QueenBoard{
     else
     return false;
   }*/
-  private boolean findSlope(String ab, String xy){
-    int x = Character.getNumericValue(xy.charAt(0));
-    int y = Character.getNumericValue(xy.charAt(1));
-    int a = Character.getNumericValue(ab.charAt(0));
-    int b = Character.getNumericValue(ab.charAt(1));
+  private boolean findSlope(int x, int y, int a, int b){
     if( x == a || y == b || Math.abs(y-b) == Math.abs(x-a)) return false;
     return true;
   }
@@ -42,29 +38,30 @@ public class QueenBoard{
       board[r+i][c+i]+=changer;
     }
   */
-  public boolean addQueen(String rc){
+  public boolean addQueen(int row, int column){
   /*System.out.println(Text.go(1,1));
     System.out.println(this);
     Text.wait(50);*/
 
-    if(illegalPoints.size()>0 && rc.charAt(1)<illegalPoints.get(illegalPoints.size()-1).charAt(1)) System.out.println("I FOUND THE PROBLEM");
-		for(String str: illegalPoints){
-			if(! findSlope(rc,str))
+    //if(illegalPoints.size()>0 && rc.charAt(1)<illegalPoints.get(illegalPoints.size()-1).charAt(1)) return false;
+    for(int i=0;i<illegalPoints.length;i++){
+      if(! findSlope(illegalPoints[i],i,row,column))
 				return false;
-
-		}
-		illegalPoints.add(rc);
+    }
+		illegalPoints[column]=row;
 		return true;
 	}
-  public boolean removeQueen(String xy){
-    if(! illegalPoints.get(illegalPoints.size()-1).equals(xy)) System.out.println("I FOUND THE PROBLEM");
+  public boolean removeQueen(int row, int column){
     /*System.out.println(Text.go(1,1));
     System.out.println(this);
     Text.wait(50);*/
-    if(illegalPoints.contains(xy)){
-      illegalPoints.remove(xy);
-      return true;
+    for(int i =0;i<illegalPoints.length;i++){
+      if(i==column && illegalPoints[i]==row){
+        illegalPoints[i]=-1;
+        return true;
+      }
     }
+
     return false;
   }
 
@@ -78,9 +75,9 @@ public class QueenBoard{
   }*/
   public String toString(){
     String str = "";
-    for(int i=0; i<size; i++){
-      for(int j=0; j<size; j++){
-        if(illegalPoints.contains(i + "" + j)){
+    for(int i=0; i<illegalPoints.length; i++){
+      for(int j=0; j<illegalPoints.length; j++){
+        if(illegalPoints[j]==i){
           str += "Q ";
         }
         else {
@@ -108,8 +105,10 @@ public class QueenBoard{
     return str;
   }*/
   public boolean solve(){
-		if(illegalPoints.size() > 0) throw new IllegalStateException("There is already a Queen");
-		return solveH();
+    for(int i=0;i<illegalPoints.length;i++){
+        	if(illegalPoints[i] != -1) throw new IllegalStateException("There is already a Queen");
+    }
+		return solveH(0);
 
 	}
   /*public boolean solve(){
@@ -120,33 +119,34 @@ public class QueenBoard{
     }
     return 1==solveH(0,0, false, 0);
   }*/
-  private boolean solveH(){
-    int column = illegalPoints.size();
+  private boolean solveH(int column){
+    int size = illegalPoints.length;
     if(column == size){
       return true;
-      //String row = illegalPoints.get(size-1).substring(0,1);
-      //removeQueen(row+column);
-
     }
-
     int i = 0;
     while(i < size){
-      if(addQueen(i+""+column)){
-	if(solveH()) return true;
-	removeQueen(i+""+column);
+      if(addQueen(i,column)){
+	if(solveH(column+1)) return true;
+	removeQueen(i,column);
       }
       i++;
     }
     return false;
   }
   private int countH(int sum){
-    if(illegalPoints.size() == size) return ++sum;
-    int column = illegalPoints.size();
+    int size = illegalPoints.length;
+    int column =0;
+    for(int i=0;i<size;i++){
+        	if(illegalPoints[i]>-1) column=i;
+    }
+    column++;
+    if(column==size)return ++sum;
     int i = 0;
     while(i < size){
-      if(addQueen(i+""+column)){
-	sum+=countH(0);
-      	removeQueen(i+""+column);
+      if(addQueen(i,column)){
+	       sum+=countH(0);
+      	removeQueen(i,column);
       }
       i++;
     }
@@ -198,7 +198,9 @@ public class QueenBoard{
       return solveH(0,column+1,integer,sum);
     }*/
     public int countSolutions(){
-      if(illegalPoints.size() > 0) throw new IllegalStateException("There is already a Queen");
+      for(int i=0;i<illegalPoints.length;i++){
+          	if(illegalPoints[i] != -1) throw new IllegalStateException("There is already a Queen");
+      }
       return countH(0);
     }
     /*public int countSolutions(){
