@@ -136,9 +136,8 @@ public class QueenBoard{
     int size = illegalPoints.length;
     int column =0;
     for(int i=0;i<size;i++){
-        	if(illegalPoints[i]>-1) column=i;
+        	if(illegalPoints[i]>-1) column++;
     }
-    column++;
     if(column==size)return ++sum;
     int i = 0;
     while(i < size){
