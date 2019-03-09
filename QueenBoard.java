@@ -7,6 +7,7 @@ public class QueenBoard{
   //public int [][] board;
   public List<String> illegalPoints;
   public int size;
+  //
 
   public QueenBoard(int size){
     //board = new int[size][size];
