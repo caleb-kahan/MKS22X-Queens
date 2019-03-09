@@ -15,7 +15,7 @@ public class QueenBoard{
     this.size=size;
   }
 
-  /*public boolean addQueen(int r, int c){ 
+  /*public boolean addQueen(int r, int c){
     if(board[r][c]==0){
       board[r][c]=-1;
       addMarks(r,c,true);
@@ -43,6 +43,9 @@ public class QueenBoard{
     }
   */
   public boolean addQueen(String rc){
+    System.out.println(Text.go(1,1));
+    System.out.println(this);
+    Text.wait(50);
 		for(String str: illegalPoints){
 			if(! findSlope(rc,str))
 				return false;
@@ -112,9 +115,6 @@ public class QueenBoard{
     return 1==solveH(0,0, false, 0);
   }*/
   private boolean solveH(){
-    /*System.out.println(Text.go(1,1));
-    System.out.println(this);
-    Text.wait(50);*/
     int column = illegalPoints.size();
     if(column == size){
       return true;
@@ -122,13 +122,13 @@ public class QueenBoard{
       //removeQueen(row+column);
 
     }
-    
+
     int i = 0;
     while(i < size){
       if(addQueen(i+""+column)){
 	if(solveH()) return true;
 	removeQueen(i+""+column);
-      } 
+      }
       i++;
     }
     return false;
@@ -171,7 +171,7 @@ public class QueenBoard{
 		rowStart=j+1;
 		removeQueen(j,column-2);
 	  }
-          
+
          }
 	return solveH(rowStart,column-2,integer,sum);
       }
