@@ -56,7 +56,6 @@ public class QueenBoard{
       illegalPoints.remove(xy);
       return true;
     }
-    System.out.println("UGLY");
     return false;
   }
 
@@ -113,6 +112,9 @@ public class QueenBoard{
     return 1==solveH(0,0, false, 0);
   }*/
   private boolean solveH(){
+    /*System.out.println(Text.go(1,1));
+    System.out.println(this);
+    Text.wait(50);*/
     int column = illegalPoints.size();
     if(column == size){
       return true;
