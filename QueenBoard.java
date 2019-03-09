@@ -42,10 +42,8 @@ public class QueenBoard{
   /*System.out.println(Text.go(1,1));
     System.out.println(this);
     Text.wait(50);*/
-
-    //if(illegalPoints.size()>0 && rc.charAt(1)<illegalPoints.get(illegalPoints.size()-1).charAt(1)) return false;
     for(int i=0;i<illegalPoints.length;i++){
-      if(! findSlope(illegalPoints[i],i,row,column))
+      if(illegalPoints[i]!=-1 && ! findSlope(illegalPoints[i],i,row,column))
 				return false;
     }
 		illegalPoints[column]=row;
