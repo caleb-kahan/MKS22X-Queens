@@ -24,9 +24,11 @@ public class QueenBoard{
     else
     return false;
   }*/
-  private boolean findSlope(int x, int y, String xy){
-    int a = Character.getNumericValue(xy.charAt(0));
-    int b = Character.getNumericValue(xy.charAt(1));
+  private boolean findSlope(String ab, String xy){
+    int x = Character.getNumericValue(xy.charAt(0));
+    int y = Character.getNumericValue(xy.charAt(1));
+    int a = Character.getNumericValue(ab.charAt(0));
+    int b = Character.getNumericValue(ab.charAt(1));
     if( x == a || y == b || Math.abs(y-b) == Math.abs(x-a)) return false;
     return true;
   }
@@ -40,13 +42,13 @@ public class QueenBoard{
       board[r+i][c+i]+=changer;
     }
   */
-  public boolean addQueen(int r, int c){
+  public boolean addQueen(String rc){
 		for(String str: illegalPoints){
-			if(! findSlope(r,c,str))
-			return false;
+			if(! findSlope(rc,str))
+				return false;
 
 		}
-		illegalPoints.add(r + "" +c);
+		illegalPoints.add(rc);
 		return true;
 	}
   public boolean removeQueen(String xy){
@@ -110,33 +112,26 @@ public class QueenBoard{
     return 1==solveH(0,0, false, 0);
   }*/
   private boolean solveH(int row){
-    if(row==size && illegalPoints.size()==0){
-        return false;
-    }
     if(illegalPoints.size() == size){
       return true;
     }
     int column = illegalPoints.size();
     int i = row;
     while(i < size){
-      if(addQueen(i, column)) break;
+      if(addQueen(i+""+column)){
+	if(solveH(0)) return true;
+	else removeQueen(i+""+column);
+      } 
       i++;
     }
-    if(i == size){
-      String str = illegalPoints.get(illegalPoints.size()-1);
-      int newStart = Character.getNumericValue(str.charAt(0)) + 1;
-      removeQueen(str);
-      return solveH(newStart);
-    }
-    else
-      return solveH(0);
+    return false;
   }
   private int countH(int row, int sum){
     if(illegalPoints.size() == size) return ++sum;
     int column = illegalPoints.size();
     int i = row;
     while(i < size){
-      if(addQueen(i, column)){
+      if(addQueen(i+""+column)){
 	sum+=countH(0,0);
       	removeQueen(i+""+column);
       }

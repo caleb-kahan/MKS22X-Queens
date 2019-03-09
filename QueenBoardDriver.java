@@ -3,6 +3,18 @@ public class QueenBoardDriver{
 		QueenBoard chess = new QueenBoard(9);
 		System.out.println(chess.countSolutions());
 		System.out.println(chess.solve());
+		chess = new QueenBoard(10);
+		System.out.println(chess.countSolutions());
+		System.out.println(chess.solve());
+		System.out.println(chess);
+		chess = new QueenBoard(15);
+		System.out.println(chess.solve());
+		System.out.println(chess);
+		chess = new QueenBoard(16);
+		System.out.println(chess.solve());
+		System.out.println(chess);
+		chess = new QueenBoard(17);
+		System.out.println(chess.solve());
 		System.out.println(chess);
 		runTest(0);
 		runTest(1);
