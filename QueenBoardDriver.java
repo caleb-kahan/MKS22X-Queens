@@ -1,6 +1,6 @@
 public class QueenBoardDriver{
 	public static void main(String [] args){
-		for(int i=0;i<15;i++){
+		for(int i=11;i<15;i++){
 			QueenBoard chess = new QueenBoard(i);
 			System.out.println(chess.countSolutions());
 			//System.out.println(chess.solve());

@@ -56,6 +56,7 @@ public class QueenBoard{
       illegalPoints.remove(xy);
       return true;
     }
+    System.out.println("UGLY");
     return false;
   }
 
@@ -130,13 +131,13 @@ public class QueenBoard{
     }
     return false;
   }
-  private int countH(int row, int sum){
+  private int countH(int sum){
     if(illegalPoints.size() == size) return ++sum;
     int column = illegalPoints.size();
-    int i = row;
+    int i = 0;
     while(i < size){
       if(addQueen(i+""+column)){
-	sum+=countH(0,0);
+	sum+=countH(0);
       	removeQueen(i+""+column);
       }
       i++;
@@ -190,7 +191,7 @@ public class QueenBoard{
     }*/
     public int countSolutions(){
       if(illegalPoints.size() > 0) throw new IllegalStateException("There is already a Queen");
-      return countH(0, 0);
+      return countH(0);
     }
     /*public int countSolutions(){
       for(int [] row: board){
