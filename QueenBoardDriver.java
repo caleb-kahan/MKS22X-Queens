@@ -1,10 +1,10 @@
 public class QueenBoardDriver{
 	public static void main(String [] args){
-		for(int i=0;i<11;i++){
+		for(int i=0;i<15;i++){
 			QueenBoard chess = new QueenBoard(i);
 			System.out.println(chess.countSolutions());
-			System.out.println(chess.solve());
-			System.out.println(chess);
+			//System.out.println(chess.solve());
+			//System.out.println(chess);
 		}
 		/*QueenBoard chess = new QueenBoard(9);
 		System.out.println(chess.countSolutions());
