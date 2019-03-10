@@ -106,8 +106,11 @@ public class QueenBoard{
     for(int i=0;i<illegalPoints.length;i++){
         	if(illegalPoints[i] != -1) throw new IllegalStateException("There is already a Queen");
     }
-		return solveH(0);
-
+		boolean solvable = solveH(0);
+    if(solvable==false){
+      clear();
+    }
+    return true;
 	}
   /*public boolean solve(){
     for(int [] row: board){
@@ -149,13 +152,11 @@ public class QueenBoard{
     }
     return sum;
   }
-  /*private void clear(){
-	for(int i=0;i<board.length;i++){
-		for(int j=0;j<board[0].length;j++){
-			board[i][j]=0;
+  private void clear(){
+	for(int i=0;i<illegalPoints.length;i++){
+			illegalPoints[i]=-1;
 		}
-	}
-  }*/
+  }
   /*private int solveH(int row, int column, boolean integer, int sum){
     if(row==board.length && column==0){
         return sum;
