@@ -5,7 +5,7 @@ import java.util.*;
 
 public class QueenBoard{
   //public int [][] board;
-  public int [] illegalPoints;
+  private int [] illegalPoints;
 
   public QueenBoard(int size){
     //board = new int[size][size];
@@ -38,7 +38,7 @@ public class QueenBoard{
       board[r+i][c+i]+=changer;
     }
   */
-  public boolean addQueen(int row, int column){
+  private boolean addQueen(int row, int column){
   /*System.out.println(Text.go(1,1));
     System.out.println(this);
     Text.wait(50);*/
@@ -49,7 +49,7 @@ public class QueenBoard{
 		illegalPoints[column]=row;
 		return true;
 	}
-  public boolean removeQueen(int row, int column){
+  private boolean removeQueen(int row, int column){
     /*System.out.println(Text.go(1,1));
     System.out.println(this);
     Text.wait(50);*/
